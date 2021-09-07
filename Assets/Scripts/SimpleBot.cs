@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using IBM.Cloud.SDK;
 using IBM.Cloud.SDK.Authentication.Iam;
 using IBM.Cloud.SDK.Utilities;
@@ -46,6 +47,8 @@ public class SimpleBot : MonoBehaviour
     protected bool messageTested = false;
     private bool deleteSessionTested = false;
     private string sessionId;
+
+    public Queue<string> queueResponse = new Queue<string>();
 
     public string textResponse = String.Empty;
 
@@ -240,6 +243,7 @@ public class SimpleBot : MonoBehaviour
         }
         else
         {
+            Debug.Log("Response length is: " + response.Result.Output.Generic.Count);
             textResponse = response.Result.Output.Generic[0].Text.ToString();
         }
 

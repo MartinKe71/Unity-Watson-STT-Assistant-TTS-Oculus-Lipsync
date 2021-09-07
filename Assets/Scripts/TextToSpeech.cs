@@ -256,7 +256,8 @@ public class TextToSpeech : MonoBehaviour
         }
         else
         {
-            nextText = textQueue.Dequeue();
+            Debug.Log("TextQueue has length" + textQueue.Count);
+            nextText = textQueue.Dequeue();            
             Debug.Log(nextText);
 
             if (String.IsNullOrEmpty(nextText))

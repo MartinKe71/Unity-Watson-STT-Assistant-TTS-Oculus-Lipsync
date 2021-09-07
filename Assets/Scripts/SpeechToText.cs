@@ -231,7 +231,7 @@ public class SpeechToText : MonoBehaviour
 
     public void StartRecording()
     {
-        Debug.Log("StartRecording");
+        //Debug.Log("StartRecording");
         if (_recordingRoutine == 0)
         {
             UnityObjectUtil.StartDestroyQueue();
