@@ -15,7 +15,7 @@ MonoBehaviour:
   Assistant_apikey: oSJ6M8AJjwfEEvWRKSk5oWgv-8L2dlVKE2xQZhBdtd4P
   serviceUrl: https://api.us-east.assistant.watson.cloud.ibm.com/instances/2b3b6e50-f8d9-489c-ab0e-b9f1bc6c6376
   versionDate: 2020-09-24
-  assistantId: 21952c3e-c0d6-47cc-be54-07cb89cc9bbe
+  assistantId: 35efbd02-5004-42b3-a302-3ec0d15e6a53
   tts_apikey: A7perBRTh-MBbvzUjX4EbGdAHIQgKV8g0EK-eeztEkKn
   tts_serviceUrl: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/82e4037a-9627-403f-aa70-a78fd8dd72b5
   stt_apikey: F6XpRldu2Z-KB7nCDN3Yopr51K90Ejr7feBdy4gvOOgV
