@@ -270,6 +270,7 @@ public class SpeechToText : MonoBehaviour
 
         bool bFirstBlock = true;
         int midPoint = _recording.samples / 2;
+        Debug.Log("Midpoint: " + midPoint);
         float[] samples = null;
 
         while (_recordingRoutine != 0 && _recording != null)
@@ -294,6 +295,8 @@ public class SpeechToText : MonoBehaviour
                 record.MaxLevel = Mathf.Max(Mathf.Abs(Mathf.Min(samples)), Mathf.Max(samples));
                 record.Clip = AudioClip.Create("Recording", midPoint, _recording.channels, _recordingHZ, false);
                 record.Clip.SetData(samples, 0);
+
+                Debug.Log("Start listening time: " + Time.time);
                 _service.OnListen(record);
                 bFirstBlock = !bFirstBlock;
             }

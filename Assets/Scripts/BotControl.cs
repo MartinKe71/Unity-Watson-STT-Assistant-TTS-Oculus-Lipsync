@@ -19,7 +19,8 @@ public class BotControl : MonoBehaviour
         /* Wait for audio clip of the output speech to finish before listening and converting
          * new input speech
          */
-        if (stt.ServiceReady() && tts.ServiceReady() && chat.ServiceReady())
+        //if (stt.ServiceReady() && tts.ServiceReady() && chat.ServiceReady())
+        if (stt.ServiceReady() && chat.ServiceReady())
         {
             if (chat.GetStatus() == SimpleBot.ProcessingStatus.Processing || !tts.IsFinished())
             {

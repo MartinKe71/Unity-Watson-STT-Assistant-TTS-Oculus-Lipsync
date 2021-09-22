@@ -400,6 +400,7 @@ namespace IBM.Watson.SpeechToText.V1
                 {
                     if (_listenActive)
                     {
+                        Debug.Log("Send audio time: " + Time.time); ;
                         _listenSocket.Send(new WSConnector.BinaryMessage(AudioClipUtil.GetL16(clip.Clip)));
                         _audioSent = true;
                         audioSentOrEnqueued = true;

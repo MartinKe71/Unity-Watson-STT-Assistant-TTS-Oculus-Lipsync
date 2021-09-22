@@ -70,7 +70,7 @@ public class SimpleBot : MonoBehaviour
     [SerializeField]
     private InputFieldTrigger externalTriggerType;
 
-    private InputField inputField;
+    public InputField inputField;
 
     // The output target GameObject to receive text from this gameObject.
     [SerializeField]
@@ -207,6 +207,7 @@ public class SimpleBot : MonoBehaviour
             }
         };
 
+        // The line that send the parsed message to the assistant service
         Assistant_service.Message(OnMessage, settings.assistantId, sessionId, input: inputMessage);
 
         while (!messageTested)
@@ -231,6 +232,7 @@ public class SimpleBot : MonoBehaviour
     // This is where the returned chat response is set to send as output
     protected virtual void OnMessage(DetailedResponse<MessageResponse> response, IBMError error)
     {
+        Debug.Log("Got response time: " + Time.time);
         Debug.Log("response = " + response.Result.ToString());
 
         if (response == null ||

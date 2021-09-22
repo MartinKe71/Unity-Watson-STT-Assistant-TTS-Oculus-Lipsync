@@ -256,6 +256,7 @@ public class TextToSpeech : MonoBehaviour
         }
         else
         {
+            Debug.Log("Add to textqueue time: " + Time.time);
             Debug.Log("TextQueue has length" + textQueue.Count);
             nextText = textQueue.Dequeue();            
             Debug.Log(nextText);
@@ -271,6 +272,7 @@ public class TextToSpeech : MonoBehaviour
         tts_service.Synthesize(
             callback: (DetailedResponse<byte[]> response, IBMError error) =>
             {
+                Debug.Log("Get Synthesize response time: " + Time.time);
                 synthesizeResponse = response.Result;
                 clip = WaveFile.ParseWAV("myClip", synthesizeResponse);
 
