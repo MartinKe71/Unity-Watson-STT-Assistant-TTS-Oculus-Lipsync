@@ -185,6 +185,8 @@ public class SimpleBot : MonoBehaviour
     {
         Debug.Log("Processchat: " + chatInput);
 
+        GetComponent<VoiceFlowTest>().ProcessChat(chatInput);
+
         // Set status to show that the chat input is being processed.
         chatStatus = ProcessingStatus.Processing;
 

@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 2071180725607596335, guid: 2ad70d9d37396824493243ee34d2ec7e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298176294923451192, guid: 2ad70d9d37396824493243ee34d2ec7e,
         type: 3}
@@ -1058,6 +1058,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 118626055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &853460948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853460947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc6f2874b1a68b4d9569050cf5b55ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  User_Id: tianrun
+  UserInput: 
+  Setting: {fileID: 11400000, guid: 32c6b661a4c7f0a46a72e216d628b169, type: 2}
 --- !u!114 &902313845 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6421326735687832922, guid: 2ad70d9d37396824493243ee34d2ec7e,
