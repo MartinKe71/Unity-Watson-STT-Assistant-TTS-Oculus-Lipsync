@@ -19,7 +19,7 @@ public class VoiceFlowTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ProcessChat("");
     }
 
     // Update is called once per frame
