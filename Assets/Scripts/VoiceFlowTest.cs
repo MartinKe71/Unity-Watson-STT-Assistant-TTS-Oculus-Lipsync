@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using IBM.Cloud.SDK.Utilities;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -16,10 +17,19 @@ public class VoiceFlowTest : MonoBehaviour
     [SerializeField]
     private VoiceFlowSettings Setting;
 
+    public InputField inputField;
+
     // Start is called before the first frame update
     void Start()
     {
-        ProcessChat("");
+        
+           
+        StartCoroutine(ProcessChat(""));
+
+        inputField = gameObject.AddComponent<InputField>();
+        inputField.textComponent = gameObject.AddComponent<Text>();
+        inputField.onValueChanged.AddListener(delegate { Runnable.Run(ProcessChat(inputField.text)); });
+        
     }
 
     // Update is called once per frame
@@ -28,13 +38,32 @@ public class VoiceFlowTest : MonoBehaviour
         
     }
 
-    public void ProcessChat(string chatInput)
+    public IEnumerator LaunchChat()
+    {
+        using (var client = new HttpClient())
+        {
+            var url = $"https://general-runtime.voiceflow.com/state/{Setting.VoiceFlowVersionId}/user/{User_Id}/interact";
+
+            var obj = new JObject() { { "type", "launch" }};
+            JObject body = new JObject();
+            body.Add("request", obj);
+
+            client.DefaultRequestHeaders.Add("Authorization", Setting.VoiceFlowApiKey);
+            client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+        }
+        yield return null;
+    }
+
+    public IEnumerator ProcessChat(string chatInput)
     {
         UserInput = chatInput;
         using (var client = new HttpClient())
         {
             var url = $"https://general-runtime.voiceflow.com/state/{Setting.VoiceFlowVersionId}/user/{User_Id}/interact";
-            var body = "{ 'request': { 'type': 'text', 'payload': 'Hello world!'}";
+
+            var obj = new JObject() { { "type", "text" }, { "payload", "Hello" } };
+            JObject body = new JObject();
+            body.Add("request", obj);
 
             client.DefaultRequestHeaders.Add("Authorization", Setting.VoiceFlowApiKey);
             var response = client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
@@ -42,6 +71,16 @@ public class VoiceFlowTest : MonoBehaviour
             string jsonContent = content.ReadAsStringAsync().Result;
             Debug.LogError(response.Status.ToString());
             Debug.LogError(response.Result.ToString());
+            Debug.LogError(content.ReadAsStringAsync()?.Result);
+
+            response = client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+            content = response.Result.Content;
+            jsonContent = content.ReadAsStringAsync().Result;
+            Debug.LogError(response.Status.ToString());
+            Debug.LogError(response.Result.ToString());
+            Debug.LogError(content.ReadAsStringAsync()?.Result);
         }
+
+        yield return null;
     }
 }

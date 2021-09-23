@@ -245,6 +245,11 @@ PrefabInstance:
       propertyPath: targetText
       value: 
       objectReference: {fileID: 102103207}
+    - target: {fileID: 6421326735687832922, guid: 2ad70d9d37396824493243ee34d2ec7e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8810863181811884279, guid: 2ad70d9d37396824493243ee34d2ec7e,
         type: 3}
       propertyPath: chatObject
@@ -1080,7 +1085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 118626055}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853460947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bf6a15f52e6f5647999b9499ab0c827, type: 3}
   m_Name: 
