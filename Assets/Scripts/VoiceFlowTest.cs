@@ -19,11 +19,14 @@ public class VoiceFlowTest : MonoBehaviour
 
     public InputField inputField;
 
+    private string _voiceflowUrl;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-           
+        _voiceflowUrl = $"https://general-runtime.voiceflow.com/state/{Setting.VoiceFlowVersionId}/user/{User_Id}/interact";
+
+        StartCoroutine(LaunchChat());
         StartCoroutine(ProcessChat(""));
 
         inputField = gameObject.AddComponent<InputField>();
@@ -42,14 +45,12 @@ public class VoiceFlowTest : MonoBehaviour
     {
         using (var client = new HttpClient())
         {
-            var url = $"https://general-runtime.voiceflow.com/state/{Setting.VoiceFlowVersionId}/user/{User_Id}/interact";
-
             var obj = new JObject() { { "type", "launch" }};
             JObject body = new JObject();
             body.Add("request", obj);
 
             client.DefaultRequestHeaders.Add("Authorization", Setting.VoiceFlowApiKey);
-            client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+            client.PostAsync(_voiceflowUrl, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
         }
         yield return null;
     }
@@ -59,21 +60,19 @@ public class VoiceFlowTest : MonoBehaviour
         UserInput = chatInput;
         using (var client = new HttpClient())
         {
-            var url = $"https://general-runtime.voiceflow.com/state/{Setting.VoiceFlowVersionId}/user/{User_Id}/interact";
-
             var obj = new JObject() { { "type", "text" }, { "payload", "Hello" } };
             JObject body = new JObject();
             body.Add("request", obj);
 
             client.DefaultRequestHeaders.Add("Authorization", Setting.VoiceFlowApiKey);
-            var response = client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+            var response = client.PostAsync(_voiceflowUrl, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
             var content = response.Result.Content;
             string jsonContent = content.ReadAsStringAsync().Result;
             Debug.LogError(response.Status.ToString());
             Debug.LogError(response.Result.ToString());
             Debug.LogError(content.ReadAsStringAsync()?.Result);
 
-            response = client.PostAsync(url, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+            response = client.PostAsync(_voiceflowUrl, new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
             content = response.Result.Content;
             jsonContent = content.ReadAsStringAsync().Result;
             Debug.LogError(response.Status.ToString());
