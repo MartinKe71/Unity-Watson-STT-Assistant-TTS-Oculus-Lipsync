@@ -599,6 +599,7 @@ MonoBehaviour:
   tts: {fileID: 1319609413}
   stt: {fileID: 394205865}
   chat: {fileID: 902313845}
+  voiceflow: {fileID: 853460948}
 --- !u!4 &619273603
 Transform:
   m_ObjectHideFlags: 0
@@ -1077,7 +1078,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   User_Id: tianrun
   UserInput: 
-  Setting: {fileID: 11400000, guid: 32c6b661a4c7f0a46a72e216d628b169, type: 2}
+  VoiceflowServiceLaunched: 0
+  Setting: {fileID: 11400000, guid: 21df4eac37292694eb4380dd19f1500e, type: 2}
+  inputField: {fileID: 0}
+  ResponseText: {fileID: 102103207}
 --- !u!114 &902313845 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6421326735687832922, guid: 2ad70d9d37396824493243ee34d2ec7e,

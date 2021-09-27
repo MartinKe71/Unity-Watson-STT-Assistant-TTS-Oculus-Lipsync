@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b4273a4b881574db7e82451d0e9772, type: 3}
-  m_Name: VoiceFlowSetting
+  m_Name: VoiceFlowSetting HappyPath
   m_EditorClassIdentifier: 
-  VoiceFlowApiKey: VF.615201e978b388001bf0ea93.O9v6L0uKxYWenpf3RIOeZJvgAp5Me4LwPqLY5NM65L
-  VoiceFlowVersionId: 614b9bb22c175e0006259229
+  VoiceFlowApiKey: VF.615203a0a6a7b3001c3d73b2.IXILhGhuwmExjaBz2CppLCcsIHQhXXqyPP6eZMiWOs
+  VoiceFlowVersionId: 614b7aaa2c175e000625920e

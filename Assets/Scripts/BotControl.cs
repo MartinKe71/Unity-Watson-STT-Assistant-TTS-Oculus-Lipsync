@@ -9,6 +9,8 @@ public class BotControl : MonoBehaviour
     private SpeechToText stt; // IBM Watson Speech to Text gameobject
     [SerializeField]
     private SimpleBot chat; // IBM Watson Assistant
+    [SerializeField]
+    private VoiceFlowTest voiceflow; // VoiceFlow chatbot
 
     private void Start()
     {
@@ -20,9 +22,9 @@ public class BotControl : MonoBehaviour
          * new input speech
          */
         //if (stt.ServiceReady() && tts.ServiceReady() && chat.ServiceReady())
-        if (stt.ServiceReady() && chat.ServiceReady())
+        if (stt.ServiceReady() && voiceflow.VoiceflowServiceLaunched)
         {
-            if (chat.GetStatus() == SimpleBot.ProcessingStatus.Processing || !tts.IsFinished())
+            if (voiceflow.GetStatus() == VoiceFlowTest.ProcessingStatus.Processing)
             {
                 stt.Active = false;
                 stt.StopRecording();

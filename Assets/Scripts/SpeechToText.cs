@@ -346,6 +346,7 @@ public class SpeechToText : MonoBehaviour
                             InputField target = targetGameObject.GetComponent<InputField>();
                             if (target != null)
                             {
+                                Debug.LogError("Passing text to chatbot");
                                 target.text = text;
                             }
                         }
