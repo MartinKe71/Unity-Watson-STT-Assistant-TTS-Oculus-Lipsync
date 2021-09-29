@@ -42,7 +42,7 @@ public class VoiceFlowTest : MonoBehaviour
         //inputField.onValueChanged.AddListener(delegate { Runnable.Run(ProcessChat(inputField.text)); });
         inputField.onValueChanged.AddListener(delegate { ProcessChat(inputField.text); });
 
-        ProcessChat("Hello");
+        //ProcessChat("Hello");
     }
 
     // Update is called once per frame
@@ -94,17 +94,19 @@ public class VoiceFlowTest : MonoBehaviour
                 chatStatus = ProcessingStatus.Processed;
 
                 JArray responseArray = JArray.Parse(jsonContent);
+                string patientStr = "";
                 foreach (var response in responseArray)
                 {
                     if (response["type"].ToString() == "speak" || response["type"].ToString() == "text")
                     {
-                        string txt = response["payload"]["message"].ToString();
-                        if (ResponseText != null)
-                        {
-                            ResponseText.text = txt;
-                        }
-                        Debug.LogError(txt);
+                        patientStr += response["payload"]["message"].ToString();
+                        patientStr += "\n";
                     }                    
+                }
+                if (!string.IsNullOrWhiteSpace(patientStr) && ResponseText != null)
+                {
+                    ResponseText.text = patientStr;
+                    Debug.LogError(patientStr);
                 }
             }
         }
