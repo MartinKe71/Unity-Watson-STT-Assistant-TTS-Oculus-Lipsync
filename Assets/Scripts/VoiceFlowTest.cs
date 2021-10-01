@@ -11,18 +11,19 @@ using UnityEngine.UI;
 
 public class VoiceFlowTest : MonoBehaviour
 {
+    [Header("VoiceFlow Setup")]
     public string User_Id;
     public string UserInput;
+    [SerializeField]
+    private VoiceFlowSettings Setting;
 
+    [Header("Service State")]
     public bool VoiceflowServiceLaunched = false;
-
     //Keep track of whether IBM Watson Assistant should process input or is
     //processing input to create a chat response.
     public enum ProcessingStatus { Process, Processing, Idle, Processed };
     private ProcessingStatus chatStatus;
 
-    [SerializeField]
-    private VoiceFlowSettings Setting;
 
     public InputField inputField;
     public Text ResponseText;
